@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Navier Stokes ($NAVIERSTOK) - AI + Mathematics Meme Token on Solana</title>
+    <meta name="description" content="Official Navier Stokes ($NAVIERSTOK) token on Solana. The Millennium Prize Navier-Stokes equations solved by AI meets crypto memes, YouTube creator culture, and decentralized liquidity.">
+    <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body data-theme="dark">
+    <!-- Interactive Navier-Stokes Fluid Velocity Field Simulation Canvas -->
+    <canvas id="fluid_canvas"></canvas>
+
+    <!-- Mesh Background Ambient Lights -->
+    <div class="mesh-bg-ambient"></div>
+
+    <!-- Standard UI Notifications Drawer -->
+    <sm-notifications id="notification_drawer"></sm-notifications>
+
+    <!-- Standard UI Notification Audio Feedback -->
+    <audio id="notification_sound">
+        <source src="notification-sound/notification.mp3" type="audio/mpeg">
+        <source src="notification-sound/notification.ogg" type="audio/ogg">
+    </audio>
+
+    <!-- Continuous Marquee Ticker Tape -->
+    <aside class="ticker-tape-wrap" aria-label="Token Ticker">
+        <div class="ticker-tape-track">
+            <div class="ticker-pill-item">
+                <span class="live-pulse-dot"></span>
+                <span>NETWORK: <strong>SOLANA SPEED</strong></span>
+            </div>
+            <div class="ticker-pill-item">
+                <span>STATUS: <strong>PUMPSWAP GRADUATED</strong></span>
+            </div>
+            <div class="ticker-pill-item">
+                <span>LORE: <strong>AI SOLVES MILLENNIUM PRIZE NAVIER-STOKES</strong></span>
+            </div>
+            <div class="ticker-pill-item">
+                <span>PAIR: <strong>TSMx STOCK TOKEN (TSMC)</strong></span>
+            </div>
+            <div class="ticker-pill-item">
+                <span>ECOSYSTEM: <strong>RANCHIMALL DECENTRALIZED WEB</strong></span>
+            </div>
+            <div class="ticker-pill-item">
+                <span>SUPPLY: <strong>1,000,000,000 $NAVIERSTOK</strong></span>
+            </div>
+            <!-- Duplicate for infinite seamless marquee -->
+            <div class="ticker-pill-item">
+                <span class="live-pulse-dot"></span>
+                <span>NETWORK: <strong>SOLANA SPEED</strong></span>
+            </div>
+            <div class="ticker-pill-item">
+                <span>STATUS: <strong>PUMPSWAP GRADUATED</strong></span>
+            </div>
+            <div class="ticker-pill-item">
+                <span>LORE: <strong>AI SOLVES MILLENNIUM PRIZE NAVIER-STOKES</strong></span>
+            </div>
+            <div class="ticker-pill-item">
+                <span>PAIR: <strong>TSMx STOCK TOKEN (TSMC)</strong></span>
+            </div>
+            <div class="ticker-pill-item">
+                <span>ECOSYSTEM: <strong>RANCHIMALL DECENTRALIZED WEB</strong></span>
+            </div>
+            <div class="ticker-pill-item">
+                <span>SUPPLY: <strong>1,000,000,000 $NAVIERSTOK</strong></span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Floating Futuristic Header -->
+    <header id="main_header">
+        <div class="nav-inner">
+            <div class="nav-brand-logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <div class="nav-logo-badge">
+                    <img src="assets/logo.jpg" alt="Navier Stokes Logo" class="nav-logo-img">
+                </div>
+                <div class="nav-brand-info">
+                    <span class="nav-brand-title">NAVIER STOKES</span>
+                    <span class="nav-brand-tagline">$NAVIERSTOK • RanchiMall</span>
+                </div>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="nav-menu-links">
+                <a href="#swap" class="nav-menu-item">Swap DEX</a>
+                <a href="#math-lore" class="nav-menu-item">AI × Math Lore</a>
+                <a href="#markets" class="nav-menu-item">Markets (11)</a>
+                <a href="#innovations" class="nav-menu-item">Innovations</a>
+                <a href="#contracts" class="nav-menu-item">Contracts</a>
+            </nav>
+
+            <!-- Socials, Theme Toggle & Action CTA -->
+            <div class="nav-actions-group">
+                <a href="https://x.com/ranchimallFLO" target="_blank" rel="noopener" class="nav-social-btn interact" title="X (Twitter) @ranchimallFLO">
+                    <svg viewBox="0 0 24 24" style="width: 0.95rem; height: 0.95rem; fill: currentColor;">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+                <a href="https://t.me/RanchiMall" target="_blank" rel="noopener" class="nav-social-btn interact" title="Telegram @RanchiMall">
+                    <svg viewBox="0 0 24 24" style="width: 0.95rem; height: 0.95rem; fill: currentColor;">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+                    </svg>
+                </a>
+                <a href="https://www.youtube.com/@ranchimallflo/shorts" target="_blank" rel="noopener" class="nav-social-btn interact" title="YouTube Shorts @ranchimallflo">
+                    <svg viewBox="0 0 24 24" style="width: 0.95rem; height: 0.95rem; fill: currentColor;">
+                        <path d="M21.58 7.19a2.5 2.5 0 0 0-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42A2.5 2.5 0 0 0 2.42 7.19C2 8.75 2 12 2 12s0 3.25.42 4.81a2.5 2.5 0 0 0 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42a2.5 2.5 0 0 0 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3-5.2 3z"/>
+                    </svg>
+                </a>
+                <theme-toggle></theme-toggle>
+                <a href="#swap" class="nav-cta-buy interact">
+                    <span>Buy Token</span>
+                    <svg viewBox="0 0 24 24" style="width: 1rem; height: 1rem; fill: currentColor;">
+                        <path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-8.29-1.42 1.42 5.43 5.43H5v2.44z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ============================================================
+             BRAND NEW IMMERSIVE HERO SHOWCASE (CENTER STAGED)
+             ============================================================ -->
+        <section class="hero-center-wrapper container" id="hero">
+            <div class="hero-super-badge">
+                <span class="badge-ai-sparkle">✨</span>
+                <span>The Millennium Prize Navier-Stokes Equations Solved by Artificial Intelligence</span>
+                <span class="badge-sol-pill">Solana Mainnet</span>
+            </div>
+
+            <!-- Floating 3D Coin Centerpiece -->
+            <div class="hero-token-centerpiece">
+                <div class="token-energy-ring"></div>
+                <div class="token-energy-ring-2"></div>
+                <div class="token-glow-halo"></div>
+                <div class="token-3d-coin">
+                    <img src="assets/logo.jpg" alt="Navier Stokes Token Coin">
+                </div>
+            </div>
+
+            <!-- Hero Headline -->
+            <h1 class="hero-main-title">
+                Superintelligence Meets <br>
+                <span class="gradient-text-hero">Fluid Mathematical Memes</span>
+            </h1>
+
+            <p class="hero-main-subtitle">
+                <strong>Navier Stokes ($NAVIERSTOK)</strong> bridges the mathematical elegance of the Millennium Prize fluid dynamics equations with OpenAI breakthroughs, Solana liquidity velocity, viral YouTube creator culture, and the RanchiMall decentralized ecosystem.
+            </p>
+
+            <!-- Holographic Navier-Stokes Equation Card -->
+            <div class="hero-equation-pill-box">
+                <div class="equation-pill-header">
+                    <span class="equation-prize-tag">🏆 $1,000,000 Millennium Prize Problem</span>
+                    <span>OpenAI Mathematical Discovery</span>
+                </div>
+                <div class="equation-pde-math">
+                    ρ ( ∂u/∂t + u · ∇u ) = -∇p + μ ∇²u + f
+                </div>
+                <div class="equation-caption-text">
+                    The fundamental partial differential equations governing fluid dynamics, turbulence, and decentralized liquidity flows.
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="hero-cta-buttons">
+                <a href="#swap" class="btn-primary-hero interact">
+                    <span>Swap $NAVIERSTOK</span>
+                    <svg viewBox="0 0 24 24" style="width: 1.2rem; height: 1.2rem; fill: currentColor;">
+                        <path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-8.29-1.42 1.42 5.43 5.43H5v2.44z"/>
+                    </svg>
+                </a>
+                <a href="#math-lore" class="btn-secondary-hero interact">
+                    <span>Explore AI & Math Lore</span>
+                    <svg viewBox="0 0 24 24" style="width: 1.1rem; height: 1.1rem; fill: currentColor;">
+                        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                    </svg>
+                </a>
+                <a href="https://solscan.io/token/4svsyTi5yRpVUUHFcKqDozCuEdhhP3H1VPy4xuTQpump" target="_blank" rel="noopener" class="btn-secondary-hero interact">
+                    <span>View Solscan</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             FULL-WIDTH LIVE ON-CHAIN METRICS HUD STRIP
+             ============================================================ -->
+        <section class="live-data-terminal-section container">
+            <div class="terminal-hud-box">
+                <!-- 1. Live Price -->
+                <div class="hud-stat-cell">
+                    <div class="hud-stat-label">
+                        <span class="live-pulse-dot"></span>
+                        <span>Live Price</span>
+                    </div>
+                    <span class="hud-stat-value" id="live_hero_price">$0.0001657</span>
+                    <span class="hud-stat-sub">Live PumpSwap AMM Feed</span>
+                </div>
+
+                <!-- 2. Market Cap -->
+                <div class="hud-stat-cell">
+                    <div class="hud-stat-label">Market Cap</div>
+                    <span class="hud-stat-value" id="live_hero_mcap">$166K</span>
+                    <span class="hud-stat-sub">Fully Diluted Value</span>
+                </div>
+
+                <!-- 3. 24h Change -->
+                <div class="hud-stat-cell">
+                    <div class="hud-stat-label">24h Momentum</div>
+                    <div style="margin-top: 0.2rem;">
+                        <span class="ticker-change-badge change-up" id="live_hero_24h">▲ +21.5%</span>
+                    </div>
+                    <span class="hud-stat-sub">DexScreener Index</span>
+                </div>
+
+                <!-- 4. Total Supply -->
+                <div class="hud-stat-cell">
+                    <div class="hud-stat-label">Total Supply</div>
+                    <span class="hud-stat-value" id="total_supply_val">1,000,000,000</span>
+                    <span class="hud-stat-sub">1 Billion Fixed Hard Cap</span>
+                </div>
+
+                <!-- 5. Circulating Supply -->
+                <div class="hud-stat-cell">
+                    <div class="hud-stat-label">Circulating Supply</div>
+                    <span class="hud-stat-value" id="circulating_supply_val">965,246,768.92</span>
+                    <span class="hud-stat-sub">Solana RPC Real-Time</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             NEXT-GEN AI QUANTUM SWAP TERMINAL (UNIFIED CARD)
+             ============================================================ -->
+        <section class="swap-section-container container" id="swap">
+            <div class="swap-terminal-unified-card">
+                <div class="swap-card-header">
+                    <div class="swap-card-title-group">
+                        <h2 class="swap-card-title">Instant Swap Terminal</h2>
+                        <span class="swap-card-badge">
+                            <span class="live-pulse-dot"></span>
+                            RanchiMall Official Solana WebWallet
+                        </span>
+                    </div>
+                    <div class="swap-rate-pill" id="swap_rate_display" title="Live conversion rate">
+                        1 SOL ≈ ... $NAVIERSTOK
+                    </div>
+                </div>
+
+                <!-- Spend Input Card -->
+                <div class="swap-box-input-wrap">
+                    <div class="swap-field-top-row">
+                        <label class="swap-label-text" for="spend_amount_input">You Spend</label>
+                        <span class="swap-fiat-text" id="spend_fiat_val">≈ $0.00 USD</span>
+                    </div>
+                    <div class="swap-field-main-row">
+                        <input 
+                            type="number" 
+                            id="spend_amount_input" 
+                            class="swap-main-input" 
+                            placeholder="0.0" 
+                            value="1" 
+                            min="0.000001" 
+                            step="any"
+                            autocomplete="off"
+                            oninput="updateCalculations()"
+                        />
+                        <div class="currency-toggle-segmented">
+                            <button type="button" class="curr-btn active" id="btn_spend_sol" onclick="setSpendCurrency('SOL')">
+                                <svg viewBox="0 0 32 32" style="width: 14px; height: 14px; fill: currentColor;">
+                                    <path d="M16 0c8.837 0 16 7.163 16 16s-7.163 16-16 16S0 24.837 0 16 7.163 0 16 0zm8.706 19.517H10.34a.59.59 0 00-.415.17l-2.838 2.815a.291.291 0 00.207.498H21.66a.59.59 0 00.415-.17l2.838-2.816a.291.291 0 00-.207-.497zm-3.046-5.292H7.294l-.068.007a.291.291 0 00-.14.49l2.84 2.816.07.06c.1.07.22.11.344.11h14.366l.068-.007a.291.291 0 00.14-.49l-2.84-2.816-.07-.06a.59.59 0 00-.344-.11zM24.706 9H10.34a.59.59 0 00-.415.17l-2.838 2.816a.291.291 0 00.207.497H21.66a.59.59 0 00.415-.17l2.838-2.815A.291.291 0 0024.706 9z"/>
+                                </svg>
+                                <span>SOL</span>
+                            </button>
+                            <button type="button" class="curr-btn" id="btn_spend_tsmx" onclick="setSpendCurrency('TSMx')">
+                                <span>TSMx</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="preset-chips-row" id="quick_amount_chips">
+                        <button type="button" class="preset-chip-btn" onclick="setQuickAmount(0.1)">0.1 SOL</button>
+                        <button type="button" class="preset-chip-btn" onclick="setQuickAmount(0.5)">0.5 SOL</button>
+                        <button type="button" class="preset-chip-btn active" onclick="setQuickAmount(1)">1.0 SOL</button>
+                        <button type="button" class="preset-chip-btn" onclick="setQuickAmount(5)">5.0 SOL</button>
+                    </div>
+                </div>
+
+                <!-- Arrow Divider -->
+                <div class="swap-arrow-middle-divider">
+                    <div class="swap-circle-arrow-btn">
+                        <svg viewBox="0 0 24 24" style="width: 1.1rem; height: 1.1rem; fill: currentColor;">
+                            <path d="M11 4v12.17l-4.59-4.59L5 13l7 7 7-7-1.41-1.41L13 16.17V4h-2z"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Receive Output Card -->
+                <div class="swap-box-input-wrap receive-wrap">
+                    <div class="swap-field-top-row">
+                        <label class="swap-label-text">You Receive (Estimated)</label>
+                        <span class="swap-fiat-text" id="receive_fiat_val">≈ $0.000110 / token</span>
+                    </div>
+                    <div class="swap-field-main-row">
+                        <div class="swap-receive-val" id="receive_estimate_display">
+                            <span>0.00</span>
+                        </div>
+                        <div class="token-badge-receive">
+                            <img src="assets/logo.jpg" alt="NAVIERSTOK" />
+                            <span>$NAVIERSTOK</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Meta Row -->
+                <div class="swap-info-meta-row">
+                    <span>Slippage Tolerance: <strong>15%</strong></span>
+                    <span>Routing: <strong>PumpSwap AMM (TSMx Pair)</strong></span>
+                </div>
+
+                <!-- Buy Action Button -->
+                <button type="button" id="main_buy_cta_btn" class="btn-execute-swap interact" onclick="executeBuyAction()">
+                    <span>Buy $NAVIERSTOK</span>
+                    <svg viewBox="0 0 24 24" style="width: 1.25rem; height: 1.25rem; fill: currentColor;">
+                        <path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-8.29-1.42 1.42 5.43 5.43H5v2.44z"/>
+                    </svg>
+                </button>
+                <div class="swap-footnote">
+                    Launches RanchiMall Solana WebWallet with pre-configured parameters
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             AI + MATHEMATICS PDE SHOWCASE SECTION
+             ============================================================ -->
+        <section class="pde-showcase-section container" id="math-lore">
+            <div class="section-head-title-center">
+                <div class="section-pill-tag">
+                    <span>🧠 Pure Mathematics & Superintelligence</span>
+                </div>
+                <h2 class="section-main-heading">The Navier-Stokes Solution by AI</h2>
+                <p class="section-lead-paragraph">
+                    When artificial intelligence (OpenAI) unlocked groundbreaking solutions for the centuries-old Millennium Prize Navier-Stokes fluid equations, it proved that machine intelligence can conquer humanity's greatest mathematical frontiers. $NAVIERSTOK celebrates this historic synthesis.
+                </p>
+            </div>
+
+            <div class="pde-cards-grid">
+                <!-- 1. Unsteady Acceleration -->
+                <div class="pde-term-card">
+                    <div class="pde-card-top-bar">
+                        <span class="pde-math-symbol">∂u / ∂t</span>
+                        <span class="pde-index-label">TERM 01</span>
+                    </div>
+                    <h3 class="pde-term-title">Unsteady Acceleration</h3>
+                    <span class="pde-lore-concept">Solana Lightning Momentum</span>
+                    <p class="pde-term-explanation">
+                        Measures the time-derivative of fluid velocity. On Solana, this translates into high-frequency block execution, sub-second finality, and explosive price momentum.
+                    </p>
+                </div>
+
+                <!-- 2. Convective Inertia -->
+                <div class="pde-term-card">
+                    <div class="pde-card-top-bar">
+                        <span class="pde-math-symbol">u · ∇u</span>
+                        <span class="pde-index-label">TERM 02</span>
+                    </div>
+                    <h3 class="pde-term-title">Convective Acceleration</h3>
+                    <span class="pde-lore-concept">Viral YouTube Network Effects</span>
+                    <p class="pde-term-explanation">
+                        Describes momentum transporting through fluid currents. Emulates how viral YouTube shorts carry memetic energy across social networks and onboarding new holders.
+                    </p>
+                </div>
+
+                <!-- 3. Pressure Gradient -->
+                <div class="pde-term-card">
+                    <div class="pde-card-top-bar">
+                        <span class="pde-math-symbol">-∇p</span>
+                        <span class="pde-index-label">TERM 03</span>
+                    </div>
+                    <h3 class="pde-term-title">Pressure Gradient</h3>
+                    <span class="pde-lore-concept">PumpSwap AMM Buy Pressure</span>
+                    <p class="pde-term-explanation">
+                        Fluids naturally rush from regions of high pressure to low pressure. Constant buyer inflow drives the token forward through bonding curve mechanics to PumpSwap graduation.
+                    </p>
+                </div>
+
+                <!-- 4. Viscous Diffusion -->
+                <div class="pde-term-card">
+                    <div class="pde-card-top-bar">
+                        <span class="pde-math-symbol">μ ∇²u</span>
+                        <span class="pde-index-label">TERM 04</span>
+                    </div>
+                    <h3 class="pde-term-title">Viscous Diffusion</h3>
+                    <span class="pde-lore-concept">Automated Market Liquidity</span>
+                    <p class="pde-term-explanation">
+                        Kinematic viscosity stabilizes shear turbulence into frictionless laminar flow. Ensures smooth trades across multi-token AMM pools paired with TSMC stock tokens ($TSMx).
+                    </p>
+                </div>
+
+                <!-- 5. External Body Forces -->
+                <div class="pde-term-card">
+                    <div class="pde-card-top-bar">
+                        <span class="pde-math-symbol">f</span>
+                        <span class="pde-index-label">TERM 05</span>
+                    </div>
+                    <h3 class="pde-term-title">External Body Forces</h3>
+                    <span class="pde-lore-concept">OpenAI AI Superintelligence</span>
+                    <p class="pde-term-explanation">
+                        External gravitational and computational vectors acting on the entire system. Represents the spark of OpenAI superintelligence that ignited the $NAVIERSTOK movement.
+                    </p>
+                </div>
+
+                <!-- 6. Incompressibility -->
+                <div class="pde-term-card">
+                    <div class="pde-card-top-bar">
+                        <span class="pde-math-symbol">∇ · u = 0</span>
+                        <span class="pde-index-label">TERM 06</span>
+                    </div>
+                    <h3 class="pde-term-title">Incompressibility Condition</h3>
+                    <span class="pde-lore-concept">1 Billion Fixed Supply</span>
+                    <p class="pde-term-explanation">
+                        Velocity divergence remains zero with perfect mass conservation. $NAVIERSTOK enforces a deflationary 1,000,000,000 fixed token cap with zero minting authority.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             11 VERIFIED TRADING HUBS (BENTO MATRIX)
+             ============================================================ -->
+        <section class="markets-showcase-section container" id="markets">
+            <div class="section-head-title-center">
+                <div class="section-pill-tag">
+                    <span>⚡ Liquidity & Exchanges</span>
+                </div>
+                <h2 class="section-main-heading">11 Verified Trading Platforms</h2>
+                <p class="section-lead-paragraph">
+                    Trade $NAVIERSTOK seamlessly across verified decentralized AMMs, high-speed trading terminals, and Web3 wallets.
+                </p>
+            </div>
+
+            <!-- PumpSwap Guide Tip -->
+            <div class="pumpswap-guide-box">
+                <div class="guide-box-header">
+                    <svg class="guide-box-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                    <div>
+                        <strong>PumpSwap AMM Note:</strong> NAVIERSTOK is paired with <strong>TSMx</strong> (TSMC Stock Token). On PumpSwap, replace SOL in the Sell field by pasting the TSMx token contract address:
+                    </div>
+                </div>
+                <div class="guide-contract-strip">
+                    <code class="guide-token-address" title="TSMx Contract Address">XsafvsGtzFqqHgTnA3aPC83EAMkacU5mcGtcSayhpVV</code>
+                    <button type="button" class="btn-copy-tsmx interact" onclick="copyText('XsafvsGtzFqqHgTnA3aPC83EAMkacU5mcGtcSayhpVV', 'TSMx Contract Address')">
+                        <span>Copy TSMx</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 11 DEX Platforms Matrix -->
+            <div class="dex-cards-grid">
+                <!-- 1. PumpSwap -->
+                <a href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=4svsyTi5yRpVUUHFcKqDozCuEdhhP3H1VPy4xuTQpump" target="_blank" rel="noopener" class="dex-tile-card interact" title="Swap on PumpSwap (TSMx pair / Official AMM)">
+                    <div class="dex-tile-left">
+                        <span class="dex-live-beacon"></span>
+                        <div class="dex-title-group">
+                            <span class="dex-name-text">PumpSwap</span>
+                            <span class="dex-pair-desc">TSMx pair (Official AMM)</span>
+                        </div>
+                    </div>
+                    <svg class="dex-open-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                </a>
+
+                <!-- 2. Pump.fun -->
+                <a href="https://pump.fun/coin/4svsyTi5yRpVUUHFcKqDozCuEdhhP3H1VPy4xuTQpump" target="_blank" rel="noopener" class="dex-tile-card interact" title="Buy on Pump.fun (SOL pair)">
+                    <div class="dex-tile-left">
+                        <span class="dex-live-beacon"></span>
+                        <div class="dex-title-group">
+                            <span class="dex-name-text">Pump.fun</span>
+                            <span class="dex-pair-desc">SOL pair</span>
+                        </div>
+                    </div>
+                    <svg class="dex-open-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                </a>
+
+                <!-- 3. Jupiter DEX -->
+                <a href="https://jup.ag/swap?sell=XsafvsGtzFqqHgTnA3aPC83EAMkacU5mcGtcSayhpVV&buy=4svsyTi5yRpVUUHFcKqDozCuEdhhP3H1VPy4xuTQpump" target="_blank" rel="noopener" class="dex-tile-card interact" title="Swap on Jupiter (TSMx pair)">
+                    <div class="dex-tile-left">
+                        <span class="dex-live-beacon"></span>
+                        <div class="dex-title-group">
+                            <span class="dex-name-text">Jupiter</span>
+                            <span class="dex-pair-desc">TSMx pair</span>
+                        </div>
+                    </div>
+                    <svg class="dex-open-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                </a>
+
+                <!-- 4. Phantom Wallet -->
+                <a href="https://phantom.com/tokens/solana/4svsyTi5yRpVUUHFcKqDozCuEdhhP3H1VPy4xuTQpump" target="_blank" rel="noopener" class="dex-tile-card interact" title="Buy in Phantom Wallet (SOL pair)">
+                    <div class="dex-tile-left">
+                        <span class="dex-live-beacon"></span>
+                        <div class="dex-title-group">
+                            <span class="dex-name-text">Phantom</span>
+                            <span class="dex-pair-desc">SOL pair</span>
+                        </div>
+                    </div>
+                    <svg class="dex-open-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                </a>
+
+                <!-- 5. MEXC DEX -->
+                <a href="https://www.mexc.com/dex/onchain/sol/4svsyTi5yRpVUUHFcKqDozCuEdhhP3H1VPy4xuTQpump" target="_blank" rel="noopener" class="dex-tile-card interact" title="Trade on MEXC DEX (SOL pair)">
+                    <div class="dex-tile-left">
+                        <span class="dex-live-beacon"></span>
+                        <div class="dex-title-group">
+                            <span class="dex-name-text">MEXC DEX</span>
+                            <span class="dex-pair-desc">SOL pair</span>
+                        </div>
+                    </div>
+                    <svg class="dex-open-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                </a>
+
+                <!-- 6. OKX Web3 -->
+                <a href="https://web3.okx.com/token/solana/4svsyTi5yRpVUUHFcKqDozCuEdhhP3H1VPy4xuTQpump?ref=COINGECKOREF" target="_blank" rel="noopener" class="dex-tile-card interact" title="Trade on OKX Web3 (SOL pair)">
+                    <div class="dex-tile-left">
+                        <span class="dex-live-beacon"></span>
+                        <div class="dex-title-group">
+                            <span class="dex-name-text">OKX Web3</span>
+                            <span class="dex-pair-desc">SOL pair</span>
+                        </div>
+                    </div>
+                    <svg class="dex-open-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                </a>
+
+                <!-- 7. GMGN.ai -->
+                <a href="https://gmgn.ai/sol/token/solscan_4svsyTi5yRpVUUHFcKqDozCuEdhhP3H1VPy4xuTQpump" target="_blank" rel="noopener" class="dex-tile-card interact" title="Trade on GMGN (SOL pair)">
+                    <div class="dex-tile-left">
+                        <span class="dex-live-beacon"></span>
+                        <div class="dex-title-group">
+                            <span class="dex-name-text">GMGN</span>
+                            <span class="dex-pair-desc">SOL pair</span>
+                        </div>
+                    </div>
+                    <svg class="dex-open-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                </a>
+
+                <!-- 8. AXIOM Trade -->
+                <a href="https://axiom.trade/meme/AkyigaXhnBCKWupybbphq5VeUg1H2RNHnbLgj5zoyj7t" target="_blank" rel="noopener" class="dex-tile-card interact" title="Trade on AXIOM (SOL pair)">
+                    <div class="dex-tile-left">
+                        <span class="dex-live-beacon"></span>
+                        <div class="dex-title-group">
+                            <span class="dex-name-text">AXIOM</span>
+                            <span class="dex-pair-desc">SOL pair</span>
+                        </div>
+                    </div>
+                    <svg class="dex-open-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                </a>
+
+                <!-- 9. BirdEye -->
+                <a href="https://birdeye.so/solana/token/4svsyTi5yRpVUUHFcKqDozCuEdhhP3H1VPy4xuTQpump" target="_blank" rel="noopener" class="dex-tile-card interact" title="Trade on BirdEye (TSMx pair available)">
+                    <div class="dex-tile-left">
+                        <span class="dex-live-beacon"></span>
+                        <div class="dex-title-group">
+                            <span class="dex-name-text">BirdEye</span>
+                            <span class="dex-pair-desc">TSMx pair</span>
+                        </div>
+                    </div>
+                    <svg class="dex-open-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                </a>
+
+                <!-- 10. Padre Terminal -->
+                <a href="https://trade.padre.gg/trade/solana/AkyigaXhnBCKWupybbphq5VeUg1H2RNHnbLgj5zoyj7t" target="_blank" rel="noopener" class="dex-tile-card interact" title="Trade on Padre Terminal (SOL pair)">
+                    <div class="dex-tile-left">
+                        <span class="dex-live-beacon"></span>
+                        <div class="dex-title-group">
+                            <span class="dex-name-text">Padre Terminal</span>
+                            <span class="dex-pair-desc">SOL pair</span>
+                        </div>
+                    </div>
+                    <svg class="dex-open-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                </a>
+
+                <!-- 11. Solflare -->
+                <a href="https://www.solflare.com/prices/navierstokes/4svsyTi5yRpVUUHFcKqDozCuEdhhP3H1VPy4xuTQpump/" target="_blank" rel="noopener" class="dex-tile-card interact" title="Trade on Solflare (SOL pair)">
+                    <div class="dex-tile-left">
+                        <span class="dex-live-beacon"></span>
+                        <div class="dex-title-group">
+                            <span class="dex-name-text">Solflare</span>
+                            <span class="dex-pair-desc">SOL pair</span>
+                        </div>
+                    </div>
+                    <svg class="dex-open-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             ECOSYSTEM INNOVATIONS (BENTO BOX)
+             ============================================================ -->
+        <section class="innovations-showcase-section container" id="innovations">
+            <div class="section-head-title-center">
+                <div class="section-pill-tag">
+                    <span>🚀 Technological Breakthroughs</span>
+                </div>
+                <h2 class="section-main-heading">On-Chain Innovations</h2>
+                <p class="section-lead-paragraph">
+                    Pioneering industry firsts engineered across the Navier Stokes and RanchiMall Web3 ecosystem:
+                </p>
+            </div>
+
+            <div class="innovations-bento-layout">
+                <!-- Card 1: Solana WebWallet -->
+                <div class="innovation-box-card box-solana interact">
+                    <div class="innovation-box-top">
+                        <span class="innovation-tag-pill">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                            </svg>
+                            Solana Native
+                        </span>
+                        <span class="innovation-num-huge">01</span>
+                    </div>
+                    <div class="innovation-box-content">
+                        <h3 class="innovation-quote-title">"NO APPS. NO EXTENSIONS. JUST WEB."</h3>
+                        <span class="innovation-feature-name">First Direct WebWallet for Pump.fun</span>
+                        <p class="innovation-body-desc">
+                            Engineered a zero-friction, non-custodial browser wallet enabling 1-click instant purchases directly into Pump.fun and PumpSwap AMM pools.
+                        </p>
+                    </div>
+                    <div>
+                        <a href="https://ranchimall.github.io/solanawallet/#/buy" target="_blank" rel="noopener" class="btn-innovation-launch">
+                            <span>Launch WebWallet</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7"></line>
+                                <polyline points="7 7 17 7 17 17"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 2: Bitcoin Integration -->
+                <div class="innovation-box-card box-btc interact">
+                    <div class="innovation-box-top">
+                        <span class="innovation-tag-pill">
+                            <span>₿</span>
+                            Historic First
+                        </span>
+                        <span class="innovation-num-huge">02</span>
+                    </div>
+                    <div class="innovation-box-content">
+                        <h3 class="innovation-quote-title">"WE BROKE THE BITCOIN BARRIER."</h3>
+                        <span class="innovation-feature-name">First Bitcoin → Pump.fun Pipeline</span>
+                        <p class="innovation-body-desc">
+                            Connected digital gold liquidity directly into the Pump.fun token ecosystem for the very first time in crypto history.
+                        </p>
+                    </div>
+                    <div>
+                        <a href="https://ranchimall.github.io/btcwallet/" target="_blank" rel="noopener" class="btn-innovation-launch">
+                            <span>Explore BTC Bridge</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7"></line>
+                                <polyline points="7 7 17 7 17 17"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 3: Dogecoin Swap -->
+                <div class="innovation-box-card box-doge interact">
+                    <div class="innovation-box-top">
+                        <span class="innovation-tag-pill">
+                            <span>🐕</span>
+                            Meme Cross-Chain
+                        </span>
+                        <span class="innovation-num-huge">03</span>
+                    </div>
+                    <div class="innovation-box-content">
+                        <h3 class="innovation-quote-title">"OG MEME MEETS NEXT-GEN DEFI."</h3>
+                        <span class="innovation-feature-name">World's First Dogecoin → Pump.fun Swap</span>
+                        <p class="innovation-body-desc">
+                            Pioneered direct cross-chain swap routing from native Dogecoin ($DOGE) directly into Solana meme token liquidity.
+                        </p>
+                    </div>
+                    <div>
+                        <a href="https://ranchimall.github.io/dogewallet/" target="_blank" rel="noopener" class="btn-innovation-launch">
+                            <span>View Doge Swap</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7"></line>
+                                <polyline points="7 7 17 7 17 17"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 4: Tokenized Stocks -->
+                <div class="innovation-box-card box-stocks interact">
+                    <div class="innovation-box-top">
+                        <span class="innovation-tag-pill">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                                <polyline points="16 7 22 7 22 13"></polyline>
+                            </svg>
+                            Real-World Assets
+                        </span>
+                        <span class="innovation-num-huge">04</span>
+                    </div>
+                    <div class="innovation-box-content">
+                        <h3 class="innovation-quote-title">"WALL STREET MEETS SOLANA."</h3>
+                        <span class="innovation-feature-name">First Direct Tokenized Stock WebWallet</span>
+                        <p class="innovation-body-desc">
+                            Pioneered direct trading between meme token liquidity and genuine tokenized equities, launching with TSMC stock ($TSMx).
+                        </p>
+                    </div>
+                    <div>
+                        <a href="https://ranchimall.github.io/solanawallet/#/transfer-stocks" target="_blank" rel="noopener" class="btn-innovation-launch">
+                            <span>Explore Tokenized Stocks</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7"></line>
+                                <polyline points="7 7 17 7 17 17"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             VERIFIED CONTRACT VAULT & CINEMA THEATER
+             ============================================================ -->
+        <section class="vault-cinema-section container" id="contracts">
+            <div class="vault-cinema-layout">
+                <!-- Verified Contracts Vault -->
+                <div class="vault-container-card">
+                    <div class="vault-head-title-row">
+                        <h2 class="vault-main-title">Verified Contracts</h2>
+                        <span class="innovation-tag-pill" style="color: var(--solana-emerald);">Solana Mainnet</span>
+                    </div>
+
+                    <!-- 1. Navier Stokes Token Mint -->
+                    <div class="vault-contract-item">
+                        <span class="vault-item-name">Navier Stokes ($NAVIERSTOK) Mint Address</span>
+                        <div class="vault-addr-bar">
+                            <code class="vault-addr-text" id="token_mint_addr">4svsyTi5yRpVUUHFcKqDozCuEdhhP3H1VPy4xuTQpump</code>
+                            <button type="button" class="btn-vault-copy interact" onclick="copyText('4svsyTi5yRpVUUHFcKqDozCuEdhhP3H1VPy4xuTQpump', 'Navier Stokes Contract Address')">
+                                Copy
+                            </button>
+                        </div>
+                        <div class="vault-links-row">
+                            <a href="https://solscan.io/token/4svsyTi5yRpVUUHFcKqDozCuEdhhP3H1VPy4xuTQpump" target="_blank" rel="noopener" class="vault-solscan-link">
+                                <span>View on Solscan ↗</span>
+                            </a>
+                            <a href="https://pump.fun/coin/4svsyTi5yRpVUUHFcKqDozCuEdhhP3H1VPy4xuTQpump" target="_blank" rel="noopener" class="vault-solscan-link">
+                                <span>View on Pump.fun ↗</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 2. PumpSwap AMM Pool Contract -->
+                    <div class="vault-contract-item">
+                        <span class="vault-item-name">PumpSwap AMM Pool Contract Address</span>
+                        <div class="vault-addr-bar">
+                            <code class="vault-addr-text" id="pool_addr">AkyigaXhnBCKWupybbphq5VeUg1H2RNHnbLgj5zoyj7t</code>
+                            <button type="button" class="btn-vault-copy interact" onclick="copyText('AkyigaXhnBCKWupybbphq5VeUg1H2RNHnbLgj5zoyj7t', 'PumpSwap Pool Address')">
+                                Copy
+                            </button>
+                        </div>
+                        <div class="vault-links-row">
+                            <a href="https://solscan.io/account/AkyigaXhnBCKWupybbphq5VeUg1H2RNHnbLgj5zoyj7t" target="_blank" rel="noopener" class="vault-solscan-link">
+                                <span>View AMM Pool on Solscan ↗</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 3. TSMx Stock Token Contract -->
+                    <div class="vault-contract-item">
+                        <span class="vault-item-name">TSMx Stock Token Contract Address (Launch Pair)</span>
+                        <div class="vault-addr-bar">
+                            <code class="vault-addr-text" id="tsmx_addr">XsafvsGtzFqqHgTnA3aPC83EAMkacU5mcGtcSayhpVV</code>
+                            <button type="button" class="btn-vault-copy interact" onclick="copyText('XsafvsGtzFqqHgTnA3aPC83EAMkacU5mcGtcSayhpVV', 'TSMx Contract Address')">
+                                Copy
+                            </button>
+                        </div>
+                        <div class="vault-links-row">
+                            <a href="https://solscan.io/token/XsafvsGtzFqqHgTnA3aPC83EAMkacU5mcGtcSayhpVV" target="_blank" rel="noopener" class="vault-solscan-link">
+                                <span>View TSMx on Solscan ↗</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cinema Theater Origin Video -->
+                <div class="cinema-theater-card">
+                    <div>
+                        <h2 class="cinema-title-text">Origin Story Video</h2>
+                        <p class="cinema-sub-desc">Watch the official lore behind the Navier Stokes AI & meme breakthrough:</p>
+                    </div>
+                    <div class="cinema-video-frame">
+                        <iframe 
+                            src="https://www.youtube-nocookie.com/embed/0PsjmaalpXY" 
+                            title="Navier Stokes ($NAVIERSTOK) Origin Story" 
+                            loading="lazy"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="main_footer">
+        <div class="container footer-inner-content">
+            <div class="nav-brand-logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <div class="nav-logo-badge" style="width: 38px; height: 38px;">
+                    <img src="assets/logo.jpg" alt="Navier Stokes Logo" class="nav-logo-img">
+                </div>
+                <div class="nav-brand-info" style="text-align: left;">
+                    <span class="nav-brand-title">NAVIER STOKES</span>
+                    <span class="nav-brand-tagline">AI + Mathematics Meme Ecosystem</span>
+                </div>
+            </div>
+
+            <div class="footer-social-row">
+                <a href="https://x.com/ranchimallFLO" target="_blank" rel="noopener" class="nav-social-btn interact" title="X (Twitter) @ranchimallFLO">
+                    <svg viewBox="0 0 24 24" style="width: 0.95rem; height: 0.95rem; fill: currentColor;">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+                <a href="https://t.me/RanchiMall" target="_blank" rel="noopener" class="nav-social-btn interact" title="Telegram @RanchiMall">
+                    <svg viewBox="0 0 24 24" style="width: 0.95rem; height: 0.95rem; fill: currentColor;">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+                    </svg>
+                </a>
+                <a href="https://www.youtube.com/@ranchimallflo/shorts" target="_blank" rel="noopener" class="nav-social-btn interact" title="YouTube Shorts @ranchimallflo">
+                    <svg viewBox="0 0 24 24" style="width: 0.95rem; height: 0.95rem; fill: currentColor;">
+                        <path d="M21.58 7.19a2.5 2.5 0 0 0-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42A2.5 2.5 0 0 0 2.42 7.19C2 8.75 2 12 2 12s0 3.25.42 4.81a2.5 2.5 0 0 0 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42a2.5 2.5 0 0 0 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3-5.2 3z"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="footer-legal-copy">
+                &copy; 2026 <strong>Navier Stokes ($NAVIERSTOK)</strong> • Linking AI with Blockchain through Memes and YouTube • Part of the <strong>RanchiMall</strong> Ecosystem.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Standard UI Core Scripts -->
+    <script src="js/main_UI.js"></script>
+    <script src="js/components.min.js"></script>
+
+    <!-- Interactive Navier-Stokes Fluid Velocity Field Canvas Script -->
+    <script>
+        (function initFluidCanvas() {
+            const canvas = document.getElementById('fluid_canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let width = canvas.width = window.innerWidth;
+            let height = canvas.height = window.innerHeight;
+
+            window.addEventListener('resize', () => {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            });
+
+            // Particles simulating velocity streamlines
+            const particleCount = Math.min(60, Math.floor(width / 26));
+            const particles = [];
+
+            class FluidParticle {
+                constructor() {
+                    this.reset(true);
+                }
+
+                reset(initial = false) {
+                    this.x = Math.random() * width;
+                    this.y = initial ? Math.random() * height : -20;
+                    this.vx = (Math.random() - 0.5) * 1.2;
+                    this.vy = Math.random() * 0.7 + 0.3;
+                    this.radius = Math.random() * 2 + 1;
+                    this.alpha = Math.random() * 0.35 + 0.15;
+                    this.colorType = Math.random() > 0.5 ? 'cyan' : 'purple';
+                }
+
+                update(mouse) {
+                    // Navier-Stokes convective perturbation near cursor
+                    if (mouse.active) {
+                        const dx = this.x - mouse.x;
+                        const dy = this.y - mouse.y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 180 && dist > 0) {
+                            const force = (180 - dist) / 180;
+                            const angle = Math.atan2(dy, dx);
+                            // Vorticity swirling effect
+                            this.vx += Math.cos(angle + Math.PI / 2) * force * 1.8;
+                            this.vy += Math.sin(angle + Math.PI / 2) * force * 1.8;
+                        }
+                    }
+
+                    // Natural fluid dampening / viscosity
+                    this.vx *= 0.98;
+                    this.vy = this.vy * 0.98 + 0.02;
+
+                    this.x += this.vx;
+                    this.y += this.vy;
+
+                    if (this.y > height + 20 || this.x < -30 || this.x > width + 30) {
+                        this.reset();
+                    }
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    if (this.colorType === 'cyan') {
+                        ctx.fillStyle = `rgba(0, 242, 254, ${this.alpha})`;
+                    } else {
+                        ctx.fillStyle = `rgba(157, 78, 221, ${this.alpha})`;
+                    }
+                    ctx.fill();
+                }
+            }
+
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new FluidParticle());
+            }
+
+            const mouse = { x: -1000, y: -1000, active: false, timer: null };
+
+            window.addEventListener('mousemove', (e) => {
+                mouse.x = e.clientX;
+                mouse.y = e.clientY;
+                mouse.active = true;
+                clearTimeout(mouse.timer);
+                mouse.timer = setTimeout(() => { mouse.active = false; }, 1500);
+            });
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+
+                // Draw connecting velocity streamline filaments
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update(mouse);
+                    particles[i].draw();
+
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+
+                        if (dist < 90) {
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            const lineAlpha = (1 - dist / 90) * 0.12;
+                            ctx.strokeStyle = `rgba(0, 242, 254, ${lineAlpha})`;
+                            ctx.lineWidth = 0.8;
+                            ctx.stroke();
+                        }
+                    }
+                }
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        })();
+    </script>
+
+    <!-- Supply Fetching, DexScreener Live Prices & Swap Calculations -->
+    <script>
+        // Copy to clipboard with Standard UI notify alert
+        function copyText(text, label) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text).then(() => {
+                    notify(label + ' copied to clipboard!', 'success');
+                }).catch(() => {
+                    notify('Copied: ' + text, 'success');
+                });
+            } else {
+                notify('Copied: ' + text, 'success');
+            }
+        }
+
+        // Dynamically fetch and update circulating supply from circulating.txt
+        async function fetchSupplyData() {
+            try {
+                // Fetch Circulating Supply
+                const circRes = await fetch('circulating.txt?t=' + Date.now());
+                if (circRes.ok) {
+                    const circText = (await circRes.text()).trim();
+                    const circNum = parseFloat(circText);
+                    if (!isNaN(circNum)) {
+                        document.getElementById('circulating_supply_val').textContent = circNum.toLocaleString(undefined, {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 6
+                        });
+                    }
+                }
+            } catch (e) {
+                console.log('Using default circulating supply fallback');
+            }
+        }
+
+        // Price and Swap State
+        const priceState = {
+            navierstokPriceInTsmx: 0.0000003495, // Default fallback from PumpSwap AMM
+            tsmxPriceInUsd: 475.00,             // Default fallback from Orca
+            solPriceInUsd: 150.00,              // Default fallback
+            priceChange24h: 21.5,               // 24h % change fallback
+            currentSpendCurrency: 'SOL'
+        };
+
+        // Update Live Hero Price, Market Cap, and 24h Change Banner
+        function updateHeroPriceDisplay() {
+            const navierstokUsd = priceState.navierstokPriceInTsmx * priceState.tsmxPriceInUsd;
+            const priceEl = document.getElementById('live_hero_price');
+            const mcapEl = document.getElementById('live_hero_mcap');
+            const changeEl = document.getElementById('live_hero_24h');
+
+            const formattedPrice = '$' + navierstokUsd.toLocaleString(undefined, {
+                minimumFractionDigits: 6,
+                maximumFractionDigits: 7
+            });
+
+            if (priceEl && navierstokUsd > 0) {
+                priceEl.textContent = formattedPrice;
+            }
+
+            if (mcapEl && navierstokUsd > 0) {
+                const totalMcap = navierstokUsd * 1000000000;
+                if (totalMcap >= 1000000) {
+                    mcapEl.textContent = '$' + (totalMcap / 1000000).toFixed(2) + 'M';
+                } else if (totalMcap >= 1000) {
+                    mcapEl.textContent = '$' + Math.round(totalMcap / 1000) + 'K';
+                } else {
+                    mcapEl.textContent = '$' + Math.round(totalMcap).toLocaleString();
+                }
+            }
+
+            if (changeEl) {
+                const change = priceState.priceChange24h;
+                const isPositive = change >= 0;
+                const arrow = isPositive ? '▲ ' : '▼ ';
+                const sign = change > 0 ? '+' : '';
+                changeEl.textContent = arrow + sign + change.toFixed(1) + '%';
+                changeEl.className = 'ticker-change-badge ' + (isPositive ? 'change-up' : 'change-down');
+            }
+        }
+
+        // Fetch Live Prices from DexScreener & CoinGecko
+        async function fetchLivePrices() {
+            try {
+                // 1. Fetch NAVIERSTOK / TSMx pair on PumpSwap
+                const navierRes = await fetch('https://api.dexscreener.com/latest/dex/tokens/4svsyTi5yRpVUUHFcKqDozCuEdhhP3H1VPy4xuTQpump');
+                if (navierRes.ok) {
+                    const data = await navierRes.json();
+                    if (data.pairs && data.pairs.length > 0) {
+                        const pair = data.pairs[0];
+                        const priceNative = parseFloat(pair.priceNative);
+                        if (!isNaN(priceNative) && priceNative > 0) {
+                            priceState.navierstokPriceInTsmx = priceNative;
+                        }
+                        if (pair.priceChange && typeof pair.priceChange.h24 !== 'undefined') {
+                            const change24 = parseFloat(pair.priceChange.h24);
+                            if (!isNaN(change24)) {
+                                priceState.priceChange24h = change24;
+                            }
+                        }
+                    }
+                }
+            } catch (err) {
+                console.warn('DexScreener NAVIERSTOK price fallback used', err);
+            }
+
+            try {
+                // 2. Fetch TSMx price in USD from DexScreener
+                const tsmxRes = await fetch('https://api.dexscreener.com/latest/dex/tokens/XsafvsGtzFqqHgTnA3aPC83EAMkacU5mcGtcSayhpVV');
+                if (tsmxRes.ok) {
+                    const data = await tsmxRes.json();
+                    if (data.pairs && data.pairs.length > 0) {
+                        const usdcPair = data.pairs.find(p => p.quoteToken && p.quoteToken.symbol === 'USDC') || data.pairs[0];
+                        const priceUsd = parseFloat(usdcPair.priceUsd);
+                        if (!isNaN(priceUsd) && priceUsd > 0) {
+                            priceState.tsmxPriceInUsd = priceUsd;
+                        }
+                    }
+                }
+            } catch (err) {
+                console.warn('DexScreener TSMx price fallback used', err);
+            }
+
+            try {
+                // 3. Fetch SOL price in USD from CoinGecko
+                const solRes = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd');
+                if (solRes.ok) {
+                    const data = await solRes.json();
+                    if (data.solana && data.solana.usd) {
+                        const solPrice = parseFloat(data.solana.usd);
+                        if (!isNaN(solPrice) && solPrice > 0) {
+                            priceState.solPriceInUsd = solPrice;
+                        }
+                    }
+                }
+            } catch (err) {
+                console.warn('CoinGecko SOL price fallback used', err);
+            }
+
+            updateHeroPriceDisplay();
+            updateCalculations();
+        }
+
+        // Live Calculations for Buy Widget
+        function updateCalculations() {
+            const spendInput = document.getElementById('spend_amount_input');
+            if (!spendInput) return;
+
+            const amount = parseFloat(spendInput.value) || 0;
+            const navierstokUsd = priceState.navierstokPriceInTsmx * priceState.tsmxPriceInUsd;
+            
+            let estimatedTokens = 0;
+            let spendFiatUsd = 0;
+
+            if (priceState.currentSpendCurrency === 'SOL') {
+                spendFiatUsd = amount * priceState.solPriceInUsd;
+                if (navierstokUsd > 0) {
+                    estimatedTokens = spendFiatUsd / navierstokUsd;
+                }
+                document.getElementById('spend_fiat_val').textContent = '≈ $' + spendFiatUsd.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' USD';
+                
+                if (navierstokUsd > 0 && priceState.solPriceInUsd > 0) {
+                    const tokensPerSol = Math.round(priceState.solPriceInUsd / navierstokUsd);
+                    document.getElementById('swap_rate_display').textContent = '1 SOL ≈ ' + tokensPerSol.toLocaleString() + ' $NAVIERSTOK';
+                }
+            } else {
+                // TSMx
+                spendFiatUsd = amount * priceState.tsmxPriceInUsd;
+                if (priceState.navierstokPriceInTsmx > 0) {
+                    estimatedTokens = amount / priceState.navierstokPriceInTsmx;
+                }
+                document.getElementById('spend_fiat_val').textContent = '≈ $' + spendFiatUsd.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' USD';
+                
+                if (priceState.navierstokPriceInTsmx > 0) {
+                    const tokensPerTsmx = Math.round(1 / priceState.navierstokPriceInTsmx);
+                    document.getElementById('swap_rate_display').textContent = '1 TSMx ≈ ' + tokensPerTsmx.toLocaleString() + ' $NAVIERSTOK';
+                }
+            }
+
+            document.getElementById('receive_fiat_val').textContent = '≈ $' + navierstokUsd.toFixed(6) + ' / token';
+
+            const receiveDisplay = document.getElementById('receive_estimate_display');
+            if (amount <= 0) {
+                receiveDisplay.textContent = '0.00';
+            } else {
+                receiveDisplay.textContent = Math.floor(estimatedTokens).toLocaleString();
+            }
+
+            updateActiveChipHighlight(spendInput.value);
+        }
+
+        // Helper to update active chip highlight based on input value
+        function updateActiveChipHighlight(currentVal) {
+            const valNum = parseFloat(currentVal);
+            const chips = document.querySelectorAll('.preset-chip-btn');
+            chips.forEach(chip => {
+                const chipVal = parseFloat(chip.textContent);
+                if (!isNaN(valNum) && !isNaN(chipVal) && valNum === chipVal) {
+                    chip.classList.add('active');
+                } else {
+                    chip.classList.remove('active');
+                }
+            });
+        }
+
+        // Render quick preset amount chips
+        function syncQuickChips(curr, currentVal) {
+            const chipsContainer = document.getElementById('quick_amount_chips');
+            if (!chipsContainer) return;
+
+            const valNum = parseFloat(currentVal);
+            const options = curr === 'SOL' 
+                ? [0.1, 0.5, 1.0, 5.0] 
+                : [0.01, 0.1, 1.0, 5.0];
+
+            chipsContainer.innerHTML = options.map(opt => {
+                const isActive = (!isNaN(valNum) && valNum === opt);
+                const optStr = (opt === 0.01) ? '0.01' : (opt === 0.1 ? '0.1' : (opt === 0.5 ? '0.5' : opt.toFixed(1)));
+                return `<button type="button" class="preset-chip-btn ${isActive ? 'active' : ''}" onclick="setQuickAmount(${opt})">${optStr} ${curr}</button>`;
+            }).join('');
+        }
+
+        // Switch spend currency (SOL / TSMx)
+        function setSpendCurrency(curr) {
+            priceState.currentSpendCurrency = curr;
+            const btnSol = document.getElementById('btn_spend_sol');
+            const btnTsmx = document.getElementById('btn_spend_tsmx');
+            const spendInput = document.getElementById('spend_amount_input');
+            const currentVal = spendInput ? spendInput.value : '1';
+
+            if (curr === 'SOL') {
+                btnSol.classList.add('active');
+                btnTsmx.classList.remove('active');
+            } else {
+                btnTsmx.classList.add('active');
+                btnSol.classList.remove('active');
+            }
+
+            syncQuickChips(curr, currentVal);
+            updateCalculations();
+        }
+
+        // Quick amount button click
+        function setQuickAmount(val) {
+            const spendInput = document.getElementById('spend_amount_input');
+            if (spendInput) {
+                spendInput.value = val;
+            }
+            updateActiveChipHighlight(val);
+            updateCalculations();
+        }
+
+        // Trigger Buy on RanchiMall Solana Wallet with autofilled mint and amount
+        function executeBuyAction() {
+            const spendInput = document.getElementById('spend_amount_input');
+            const amount = parseFloat(spendInput.value) || 0;
+
+            if (amount <= 0) {
+                notify('Please enter a valid amount to spend', 'error');
+                spendInput.focus();
+                return;
+            }
+
+            const mintAddress = '4svsyTi5yRpVUUHFcKqDozCuEdhhP3H1VPy4xuTQpump';
+            const targetUrl = `https://ranchimall.github.io/solanawallet/#/buy?mint=${mintAddress}&amount=${amount}`;
+
+            window.open(targetUrl, '_blank', 'noopener,noreferrer');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchSupplyData();
+            fetchLivePrices();
+        });
+    </script>
+</body>
+</html>
